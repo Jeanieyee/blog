@@ -126,6 +126,149 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ld-so-object-usr-local-lib-libkk-so-from-etc-ld-so-preload-cannot-be-preloaded-cannot-open-shared-object-file-ignored" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/10/ld-so-object-usr-local-lib-libkk-so-from-etc-ld-so-preload-cannot-be-preloaded-cannot-open-shared-object-file-ignored/">ld.so: object /usr/local/lib/libkk.so from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/10/ld-so-object-usr-local-lib-libkk-so-from-etc-ld-so-preload-cannot-be-preloaded-cannot-open-shared-object-file-ignored/" class="archive-article-date">
+  	<time datetime="2019-04-10T02:58:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一个无法描述的问题：</p>
+<p>git提交远程分支时提示：ERROR: ld.so: object ‘/usr/local/lib/libkk.so’ from /etc/ld.so.preload cannot be preloaded (file too short): ignored.</p>
+<p>尝试在命令行输入：sudo # echo “” &gt; /etc/ld.so.preload<br>重启命令行<br>再次提交远程分支提示：ERROR: ld.so: object ‘/usr/local/lib/libkk.so’ from /etc/ld.so.preload cannot be preloaded (cannot open shared object file): ignored.<br>命令行输入：sudo cp /lib/libkk.so /usr/lib/libkk.so<br>重启命令行</p>
+<p>不懂！goole了半天也没理解问题是什么，最终也不知道到底是怎么解决的，以上内容只是简单记录一下！</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/10/ld-so-object-usr-local-lib-libkk-so-from-etc-ld-so-preload-cannot-be-preloaded-cannot-open-shared-object-file-ignored/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-axios取消重复请求" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/14/axios取消重复请求/">axios取消重复请求</a>
+    </h1>
+  
+
+        
+        <a href="/2019/03/14/axios取消重复请求/" class="archive-article-date">
+  	<time datetime="2019-03-14T07:57:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一、创建取消令牌<br>    1、通过CancelToken.source()来创建，source返回一个具有token跟cancel属性的对象，source.token是一个实例化对象，source.cancel是一个函数，source.cancel的原理是让token.promise对象是状态改为成功，在真正发送请求之前验证promise的状态是否改变，如果改变则取消请求。<br><figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">var CancelToken = axios.CancelToken;</span><br><span class="line">var <span class="keyword">source</span> = CancelToken.<span class="keyword">source</span>();</span><br><span class="line">axios.get(<span class="string">'/get?name=xmz'</span>, &#123;</span><br><span class="line">    cancelToken : <span class="keyword">source</span>.token</span><br><span class="line">&#125;).then((response)=&gt;&#123;</span><br><span class="line">    console.<span class="keyword">log</span>(<span class="string">'response'</span>, response)</span><br><span class="line">&#125;).<span class="keyword">catch</span>((<span class="keyword">error</span>)=&gt;&#123;</span><br><span class="line">    <span class="keyword">if</span>(axios.isCancel(<span class="keyword">error</span>))&#123;</span><br><span class="line">        console.<span class="keyword">log</span>(<span class="string">'取消请求传递的消息'</span>, <span class="keyword">error</span>.message)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        console.<span class="keyword">log</span>(<span class="string">'error'</span>, <span class="keyword">error</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 取消请求</span></span><br><span class="line"><span class="keyword">source</span>.cancel(<span class="string">'取消请求传递这条消息'</span>);</span><br></pre></td></tr></table></figure></p>
+        
+          <a class="article-more-a" href="/2019/03/14/axios取消重复请求/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/14/axios取消重复请求/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-webpack2升级weboack4笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -146,7 +289,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>一、<strong>各配置文件版本</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"babel-polyfill"</span>: <span class="string">"^6.26.0"</span>,</span><br><span class="line"><span class="string">"vue-loader"</span>: <span class="string">"^15.7.0"</span>,</span><br><span class="line"><span class="string">"babel-core"</span>: <span class="string">"^6.26.3"</span>,</span><br><span class="line"><span class="string">"babel-loader"</span>: <span class="string">"^7.1.5"</span>,</span><br><span class="line"><span class="string">"eslint-loader"</span>: <span class="string">"^2.1.2"</span>,</span><br><span class="line"><span class="string">"file-loader"</span>: <span class="string">"^3.0.1"</span>,</span><br><span class="line"><span class="string">"html-webpack-plugin"</span>: <span class="string">"^3.2.0"</span>,</span><br><span class="line"><span class="string">"mini-css-extract-plugin"</span>: <span class="string">"^0.5.0"</span>,</span><br><span class="line"><span class="string">"vue-loader"</span>: <span class="string">"^14.2.4"</span>,</span><br><span class="line"><span class="string">"vue-style-loader"</span>: <span class="string">"^4.1.2"</span>,</span><br><span class="line"><span class="string">"vue-template-compiler"</span>: <span class="string">"^2.6.8"</span>,</span><br><span class="line"><span class="string">"webpack"</span>: <span class="string">"^4.29.6"</span>,</span><br><span class="line"><span class="string">"copy-webpack-plugin"</span>: <span class="string">"^5.0.0"</span>,</span><br></pre></td></tr></table></figure></p>
+        <p>一、<strong>各配置文件版本</strong><br><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"babel-polyfill"</span>: <span class="string">"^6.26.0"</span>,</span><br><span class="line"><span class="string">"vue-loader"</span>: <span class="string">"^15.7.0"</span>,</span><br><span class="line"><span class="string">"babel-core"</span>: <span class="string">"^6.26.3"</span>,</span><br><span class="line"><span class="string">"babel-loader"</span>: <span class="string">"^7.1.5"</span>,</span><br><span class="line"><span class="string">"eslint-loader"</span>: <span class="string">"^2.1.2"</span>,</span><br><span class="line"><span class="string">"file-loader"</span>: <span class="string">"^3.0.1"</span>,</span><br><span class="line"><span class="string">"html-webpack-plugin"</span>: <span class="string">"^3.2.0"</span>,</span><br><span class="line"><span class="string">"mini-css-extract-plugin"</span>: <span class="string">"^0.5.0"</span>,</span><br><span class="line"><span class="string">"vue-loader"</span>: <span class="string">"^14.2.4"</span>,</span><br><span class="line"><span class="string">"vue-style-loader"</span>: <span class="string">"^4.1.2"</span>,</span><br><span class="line"><span class="string">"vue-template-compiler"</span>: <span class="string">"^2.6.8"</span>,</span><br><span class="line"><span class="string">"webpack"</span>: <span class="string">"^4.29.6"</span>,</span><br><span class="line"><span class="string">"copy-webpack-plugin"</span>: <span class="string">"^5.0.0"</span>,</span><br></pre></td></tr></table></figure></p>
         
           <a class="article-more-a" href="/2019/03/05/webpack2升级weboack4笔记/#more">more >></a>
         
@@ -223,7 +366,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>1、删除远程分支<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin --delete [branchName]</span><br></pre></td></tr></table></figure></p>
-
+        
+          <a class="article-more-a" href="/2018/08/07/git命令整理/#more">more >></a>
+        
       
 
       
@@ -515,11 +660,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">

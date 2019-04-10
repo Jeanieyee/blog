@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Jeanie">
 <meta property="og:description" content="1、删除远程分支1git push origin --delete [branchName]">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-28T03:57:54.000Z">
+<meta property="og:updated_time" content="2019-03-08T06:37:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git命令整理">
 <meta name="twitter:description" content="1、删除远程分支1git push origin --delete [branchName]">
@@ -150,6 +150,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>1、删除远程分支<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin --delete [branchName]</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>2、仓库迁移，详情参考：<a href="https://developer.atlassian.com/blog/2016/01/totw-copying-a-full-git-repo/" target="_blank" rel="noopener">https://developer.atlassian.com/blog/2016/01/totw-copying-a-full-git-repo/</a><br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">git clone [url to ORI repo] [temp-dir]</span><br><span class="line">cd [temp-dir]</span><br><span class="line"></span><br><span class="line">// <span class="comment">&lt;!-- 检查所有分支 --&gt;</span></span><br><span class="line">git branch -a</span><br><span class="line">git checkout [branch-name]</span><br><span class="line"></span><br><span class="line">git fetch --tags</span><br><span class="line"></span><br><span class="line">git tag</span><br><span class="line">git branch -a</span><br><span class="line"></span><br><span class="line">git remote rm origin</span><br><span class="line">git remote add origin [url to NEW repo]</span><br><span class="line">git push origin --all</span><br><span class="line">git push --tags</span><br></pre></td></tr></table></figure></p>
 
       
 
@@ -400,11 +402,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
