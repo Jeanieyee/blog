@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Jeanie">
 <meta property="og:description" content="1、删除远程分支1git push origin --delete [branchName]">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-08T06:37:32.000Z">
+<meta property="og:updated_time" content="2019-06-15T02:03:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git命令整理">
 <meta name="twitter:description" content="1、删除远程分支1git push origin --delete [branchName]">
@@ -152,7 +152,10 @@
         <p>1、删除远程分支<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin --delete [branchName]</span><br></pre></td></tr></table></figure></p>
 <a id="more"></a>
 <p>2、仓库迁移，详情参考：<a href="https://developer.atlassian.com/blog/2016/01/totw-copying-a-full-git-repo/" target="_blank" rel="noopener">https://developer.atlassian.com/blog/2016/01/totw-copying-a-full-git-repo/</a><br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">git clone [url to ORI repo] [temp-dir]</span><br><span class="line">cd [temp-dir]</span><br><span class="line"></span><br><span class="line">// <span class="comment">&lt;!-- 检查所有分支 --&gt;</span></span><br><span class="line">git branch -a</span><br><span class="line">git checkout [branch-name]</span><br><span class="line"></span><br><span class="line">git fetch --tags</span><br><span class="line"></span><br><span class="line">git tag</span><br><span class="line">git branch -a</span><br><span class="line"></span><br><span class="line">git remote rm origin</span><br><span class="line">git remote add origin [url to NEW repo]</span><br><span class="line">git push origin --all</span><br><span class="line">git push --tags</span><br></pre></td></tr></table></figure></p>
-
+<p>3、版本回退<br>    1）查看git从最近到最远的提交日志，<br>    <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br><span class="line"></span><br><span class="line">git log <span class="comment">--pertty=oneline (输出信息比git log精简)</span></span><br><span class="line"></span><br><span class="line">// 输出示例1</span><br><span class="line">192:Vue-Framework yee$ git log</span><br><span class="line"><span class="keyword">commit</span> <span class="number">3e919</span>fe3ad448847017a430e2b0036e6c71c2d29 (<span class="keyword">HEAD</span> -&gt; webpack4, origin/<span class="keyword">master</span>, typescript, <span class="keyword">master</span>)</span><br><span class="line">Author: wangjieyee &lt;wangjieyee@<span class="number">163.</span>com&gt;</span><br><span class="line"><span class="built_in">Date</span>:   Thu May <span class="number">30</span> <span class="number">15</span>:<span class="number">01</span>:<span class="number">30</span> <span class="number">2019</span> +<span class="number">0800</span></span><br><span class="line"></span><br><span class="line">    配置dev多个环境</span><br><span class="line"></span><br><span class="line"><span class="keyword">commit</span> f582ff9df3138e0270e1d590ee51a3c39b9f939b</span><br><span class="line">Author: wangjieyee &lt;wangjieyee@<span class="number">163.</span>com&gt;</span><br><span class="line"><span class="built_in">Date</span>:   Tue Mar <span class="number">5</span> <span class="number">16</span>:<span class="number">15</span>:<span class="number">44</span> <span class="number">2019</span> +<span class="number">0800</span></span><br><span class="line"></span><br><span class="line">    升级webpack4</span><br><span class="line"></span><br><span class="line"><span class="keyword">commit</span> db9e0b246d4baeb486d3e018f5373155769c9f26</span><br><span class="line">Author: wangjieyee &lt;wangjieyee@<span class="number">163.</span>com&gt;</span><br><span class="line"><span class="built_in">Date</span>:   Mon Apr <span class="number">2</span> <span class="number">17</span>:<span class="number">13</span>:<span class="number">47</span> <span class="number">2018</span> +<span class="number">0800</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">project</span> init</span><br><span class="line"></span><br><span class="line"><span class="keyword">commit</span> d0ece0a742897ed6e268d7207e593ecbb1bc2fff</span><br><span class="line">Author: wangjieyee &lt;wangjieyee@<span class="number">163.</span>com&gt;</span><br><span class="line"><span class="built_in">Date</span>:   Mon Mar <span class="number">5</span> <span class="number">11</span>:<span class="number">49</span>:<span class="number">45</span> <span class="number">2018</span> +<span class="number">0800</span></span><br><span class="line"></span><br><span class="line">    vue product init</span><br><span class="line"></span><br><span class="line">// 输出示例<span class="number">2</span></span><br><span class="line"><span class="number">192</span>:Vue-Framework yee$ git <span class="keyword">log</span> <span class="comment">--pretty=oneline</span></span><br><span class="line"><span class="number">3e919</span>fe3ad448847017a430e2b0036e6c71c2d29 (<span class="keyword">HEAD</span> -&gt; webpack4, origin/<span class="keyword">master</span>, typescript, <span class="keyword">master</span>) 配置dev多个环境</span><br><span class="line">f582ff9df3138e0270e1d590ee51a3c39b9f939b 升级webpack4</span><br><span class="line">db9e0b246d4baeb486d3e018f5373155769c9f26 <span class="keyword">project</span> init</span><br><span class="line">d0ece0a742897ed6e268d7207e593ecbb1bc2fff vue product init</span><br></pre></td></tr></table></figure></p>
+<pre><code>2）commit后面的是对应的版本号
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">reset</span> <span class="comment">--hard f582ff9df3138e0270e1d590ee51a3c39b9f939b</span></span><br></pre></td></tr></table></figure>
+</code></pre>
       
 
       
@@ -402,6 +405,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -410,15 +417,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
             
             <div class="clearfix"></div>

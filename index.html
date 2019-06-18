@@ -126,73 +126,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-ld-so-object-usr-local-lib-libkk-so-from-etc-ld-so-preload-cannot-be-preloaded-cannot-open-shared-object-file-ignored" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/10/ld-so-object-usr-local-lib-libkk-so-from-etc-ld-so-preload-cannot-be-preloaded-cannot-open-shared-object-file-ignored/">ld.so: object /usr/local/lib/libkk.so from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
-</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/10/ld-so-object-usr-local-lib-libkk-so-from-etc-ld-so-preload-cannot-be-preloaded-cannot-open-shared-object-file-ignored/" class="archive-article-date">
-  	<time datetime="2019-04-10T02:58:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一个无法描述的问题：</p>
-<p>git提交远程分支时提示：ERROR: ld.so: object ‘/usr/local/lib/libkk.so’ from /etc/ld.so.preload cannot be preloaded (file too short): ignored.</p>
-<p>尝试在命令行输入：sudo # echo “” &gt; /etc/ld.so.preload<br>重启命令行<br>再次提交远程分支提示：ERROR: ld.so: object ‘/usr/local/lib/libkk.so’ from /etc/ld.so.preload cannot be preloaded (cannot open shared object file): ignored.<br>命令行输入：sudo cp /lib/libkk.so /usr/lib/libkk.so<br>重启命令行</p>
-<p>不懂！goole了半天也没理解问题是什么，最终也不知道到底是怎么解决的，以上内容只是简单记录一下！</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/10/ld-so-object-usr-local-lib-libkk-so-from-etc-ld-so-preload-cannot-be-preloaded-cannot-open-shared-object-file-ignored/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-axios取消重复请求" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -289,7 +222,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>一、<strong>各配置文件版本</strong><br><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"babel-polyfill"</span>: <span class="string">"^6.26.0"</span>,</span><br><span class="line"><span class="string">"vue-loader"</span>: <span class="string">"^15.7.0"</span>,</span><br><span class="line"><span class="string">"babel-core"</span>: <span class="string">"^6.26.3"</span>,</span><br><span class="line"><span class="string">"babel-loader"</span>: <span class="string">"^7.1.5"</span>,</span><br><span class="line"><span class="string">"eslint-loader"</span>: <span class="string">"^2.1.2"</span>,</span><br><span class="line"><span class="string">"file-loader"</span>: <span class="string">"^3.0.1"</span>,</span><br><span class="line"><span class="string">"html-webpack-plugin"</span>: <span class="string">"^3.2.0"</span>,</span><br><span class="line"><span class="string">"mini-css-extract-plugin"</span>: <span class="string">"^0.5.0"</span>,</span><br><span class="line"><span class="string">"vue-loader"</span>: <span class="string">"^14.2.4"</span>,</span><br><span class="line"><span class="string">"vue-style-loader"</span>: <span class="string">"^4.1.2"</span>,</span><br><span class="line"><span class="string">"vue-template-compiler"</span>: <span class="string">"^2.6.8"</span>,</span><br><span class="line"><span class="string">"webpack"</span>: <span class="string">"^4.29.6"</span>,</span><br><span class="line"><span class="string">"copy-webpack-plugin"</span>: <span class="string">"^5.0.0"</span>,</span><br></pre></td></tr></table></figure></p>
+        <p>一、<strong>各配置文件版本</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"babel-polyfill"</span>: <span class="string">"^6.26.0"</span>,</span><br><span class="line"><span class="string">"vue-loader"</span>: <span class="string">"^15.7.0"</span>,</span><br><span class="line"><span class="string">"babel-core"</span>: <span class="string">"^6.26.3"</span>,</span><br><span class="line"><span class="string">"babel-loader"</span>: <span class="string">"^7.1.5"</span>,</span><br><span class="line"><span class="string">"babel-plugin-syntax-jsx"</span>: <span class="string">"6.18.0"</span>,</span><br><span class="line"><span class="string">"babel-plugin-transform-runtime"</span>: <span class="string">"6.23.0"</span>,</span><br><span class="line"><span class="string">"babel-plugin-syntax-jsx"</span>: <span class="string">"6.18.0"</span>,</span><br><span class="line"><span class="string">"eslint-loader"</span>: <span class="string">"^2.1.2"</span>,</span><br><span class="line"><span class="string">"file-loader"</span>: <span class="string">"^3.0.1"</span>,</span><br><span class="line"><span class="string">"html-webpack-plugin"</span>: <span class="string">"^3.2.0"</span>,</span><br><span class="line"><span class="string">"mini-css-extract-plugin"</span>: <span class="string">"^0.5.0"</span>,</span><br><span class="line"><span class="string">"vue-loader"</span>: <span class="string">"^14.2.4"</span>,</span><br><span class="line"><span class="string">"vue-style-loader"</span>: <span class="string">"^4.1.2"</span>,</span><br><span class="line"><span class="string">"vue-template-compiler"</span>: <span class="string">"^2.6.8"</span>,</span><br><span class="line"><span class="string">"webpack"</span>: <span class="string">"^4.29.6"</span>,</span><br><span class="line"><span class="string">"copy-webpack-plugin"</span>: <span class="string">"^5.0.0"</span>,</span><br><span class="line"><span class="string">"svg-sprite-loader"</span>: <span class="string">"^3.9.2"</span>,</span><br></pre></td></tr></table></figure></p>
         
           <a class="article-more-a" href="/2019/03/05/webpack2升级weboack4笔记/#more">more >></a>
         
@@ -660,6 +593,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -668,15 +605,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
             
             <div class="clearfix"></div>
